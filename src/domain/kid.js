@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Kid', {
-        centerName: {
-            type: DataTypes.STRING(30),
+        centerIdx: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         kidName: {
@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        userIdx: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        }
     }, {
         freezeTableName: true,
         timestamps: false,

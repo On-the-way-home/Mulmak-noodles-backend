@@ -16,5 +16,6 @@ db.Sequelize = Sequelize;
 db.User = require('./user')(sequelize, Sequelize);
 db.Kid = require('./kid')(sequelize, Sequelize);
 db.Card = require('./card')(sequelize, Sequelize);
+db.Center = require('./center')(sequelize, Sequelize);
 
 module.exports = db;
