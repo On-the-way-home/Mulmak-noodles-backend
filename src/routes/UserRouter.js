@@ -1,4 +1,4 @@
 const express = express();
 const route = express.Router();
 
-router.get("/", UserController.create());
+route.get('/auth/kakao', passport.authenticate('kakao', {failureRedirect: '#!/login',}), users.signin);
