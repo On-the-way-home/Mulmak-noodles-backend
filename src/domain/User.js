@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('User', {
         kakao: {
-            type: DataTypes.STRING(30),
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         cost: {
