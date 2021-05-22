@@ -1,22 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('User', {
-        email: {
+        kakao: {
             type: DataTypes.STRING(30),
-            unique: true,
             allowNull: false,
         },
-        userName: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-        },
-        password: {
-            type: DataTypes.STRING(200),
-            allowNull: false,
-        },
-        salt: {
-            type: DataTypes.STRING(200),
-            allowNull: false,
-        },
+        cost: {
+            type: DataTypes.INTEGER,
+            defaultValue: 59340,
+        }
     }, {
         freezeTableName: true,
         timestamps: false,

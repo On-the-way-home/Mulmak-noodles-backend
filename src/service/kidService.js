@@ -1,27 +1,63 @@
 const { Kid } = require("../domain");
 const { Card } = require("../domain");
 const { Center } = require("../domain");
+const { User } = require("../domain");
 
-//center name으로 어린이집 id 조회
-//만약에 등록이 안 되어 있는 어린이집이라면.. 등록 후 조회해야
 const readCenterIdx = async (centerName) => {
     try {
-        const centerIdx = await Center.findOne({
+        const CenterId = await Center.findOne({
             where: {
                 centerName: centerName,
             }
         })
-        return centerIdx.id;
+        return CenterId.id;
+    } catch (err) {
+        throw err;
+    }
+}
+
+const showCardInfo = async (UserId) => {
+    try {
+        const CardInfo = await Card.findOne({
+            where: {
+                UserId: UserId,
+            }
+        })
+        const result = CardInfo.bankName + ' **' + CardInfo.cardNum.substring(0, 4) + ' 개인';  //예시대로 형태 만듦
+        return result;
+    } catch (err) {
+        throw err;
+    }
+}
+const showCenterInfo = async (CenterId) => {
+    try {
+        const CenterInfo = await Center.findOne({
+            where: {
+                id: CenterId,
+            }
+        })
+        return CenterInfo.centerName;
+    } catch (err) {
+        throw err;
+    }
+}
+
+const createCenterIdx = async (centerName) => {
+    try {
+        const center = await Center.create({
+            centerName: centerName
+        });
+        return center.id;
     } catch (err) {
         throw err;
     }
 }
 
 // passport 작업 이후 userIdx 수정 필요
-const createKidInfo = async (centerIdx, kidName, kidGender, kidAge, userIdx) => {
+const createKidInfo = async (CenterId, kidName, kidGender, kidAge, userIdx) => {
     try {
         const kid = await Kid.create({
-            CenterId: centerIdx,
+            CenterId: CenterId,
             kidName: kidName,
             kidGender: kidGender,
             kidAge: kidAge,
@@ -33,7 +69,7 @@ const createKidInfo = async (centerIdx, kidName, kidGender, kidAge, userIdx) => 
     }
 }
 
-const createCardInfo = async (cardNum, cardDate, cardPassword, birthDate, userIdx) => {
+const createCardInfo = async (cardNum, cardDate, cardPassword, birthDate, UserId) => {
     try {
         const card = await Card.create({
             bankName: '국민',
@@ -41,7 +77,7 @@ const createCardInfo = async (cardNum, cardDate, cardPassword, birthDate, userId
             cardDate: cardDate,
             cardPassword: cardPassword,
             birthDate: birthDate,
-            UserId: userIdx,
+            UserId: UserId,
         });
         return card;
     } catch (err) {
@@ -49,8 +85,32 @@ const createCardInfo = async (cardNum, cardDate, cardPassword, birthDate, userId
     }
 }
 
+const showKidInfo = async (UserId) => {
+    try {
+        const kid = await Kid.findAll({
+            where: {
+                UserId: UserId,
+            },
+            include: [
+                {
+                    model: User,
+                },
+            ],
+        });
+        return kid;
+    } catch (err) {
+        throw err;
+    }
+}
+
+
+
 module.exports = {
     readCenterIdx,
+    createCenterIdx,
     createKidInfo,
     createCardInfo,
+    showKidInfo,
+    showCardInfo,
+    showCenterInfo
 }

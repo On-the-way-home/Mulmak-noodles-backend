@@ -14,8 +14,10 @@ module.exports = {
     CREATE_KID_INFO_FAIL: "아이 등록 실패",
 
     /* User */
-    READ_USER_ALL_SUCCESS: "전체 아이 목록 조회 성공",
-    READ_USER_ALL_FAIL: "전체 아이 목록 조회 실패",
+    READ_CHILDREN_ALL_SUCCESS: "전체 아이 목록 조회 성공",
+    READ_CHILDREN_ALL_FAIL: "전체 아이 목록 조회 실패",
+    EAD_USER_ALL_SUCCESS: "유저 정보 조회 성공",
+    READ_USER_ALL_FAIL: "유저 정보 조회 실패",
 
     /* 서버에러 */
     INTERNAL_SERVER_ERROR: "서버 내부 오류",
