@@ -1,9 +1,19 @@
-const User = require("../domain/User.js");
+const User = require("../domain/User");
 
-const createUser = async (req, res) => {
+const signIn = async (req, res) => {
+  res.status(200).send("1");
+}
 
+const showChildrenList = async (req, res) => {
+  res.status(200).send("2");
+}
+
+const evaluateDriver = async (req, res) => {
+  console.log("얍");
 }
 
 module.exports = {
-  createUser
+  signIn,
+  showChildrenList,
+  evaluateDriver
 }
