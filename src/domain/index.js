@@ -18,4 +18,13 @@ db.Kid = require('./kid')(sequelize, Sequelize);
 db.Card = require('./card')(sequelize, Sequelize);
 db.Center = require('./center')(sequelize, Sequelize);
 
+db.User.hasMany(db.Kid);
+db.Kid.belongsTo(db.User);
+
+db.User.hasMany(db.Card);
+db.Card.belongsTo(db.User);
+
+db.Center.hasMany(db.Kid);
+db.Kid.belongsTo(db.Center);
+
 module.exports = db;

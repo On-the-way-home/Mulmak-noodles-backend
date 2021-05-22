@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.json());
 const { sequelize } = require('./domain');
 
-sequelize.sync({ force: true })
+sequelize.sync({ force: false })
   .then(() => {
     console.log('데이터 베이스 연결 성공.');
   })

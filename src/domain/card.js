@@ -19,10 +19,6 @@ module.exports = (sequelize, DataTypes) => {
         birthDate: {
             type: DataTypes.STRING(10),
             allowNull: false,
-        },
-        userIdx: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
         }
     }, {
         freezeTableName: true,

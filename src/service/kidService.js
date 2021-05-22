@@ -17,14 +17,15 @@ const readCenterIdx = async (centerName) => {
     }
 }
 
+// passport 작업 이후 userIdx 수정 필요
 const createKidInfo = async (centerIdx, kidName, kidGender, kidAge, userIdx) => {
     try {
         const kid = await Kid.create({
-            centerIdx: centerIdx,
+            CenterId: centerIdx,
             kidName: kidName,
             kidGender: kidGender,
             kidAge: kidAge,
-            userIdx: userIdx,
+            UserId: 1,
         });
         return kid;
     } catch (err) {
@@ -40,7 +41,7 @@ const createCardInfo = async (cardNum, cardDate, cardPassword, birthDate, userId
             cardDate: cardDate,
             cardPassword: cardPassword,
             birthDate: birthDate,
-            userIdx: userIdx,
+            UserId: userIdx,
         });
         return card;
     } catch (err) {

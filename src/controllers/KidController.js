@@ -45,6 +45,7 @@ const createKid = async (req, res) => {
 }
 
 const showKid = async (req, res) => {
+
 }
 
 module.exports = {
