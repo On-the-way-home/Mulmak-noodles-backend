@@ -1,5 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Card', {
+        bankName: {
+            type: DataTypes.STRING(4),
+            allowNull: false,
+        },
         cardNum: {
             type: DataTypes.STRING(20),
             allowNull: false,
